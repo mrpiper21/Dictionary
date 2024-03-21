@@ -1,7 +1,7 @@
 import React from "react";
 import { View, Text } from "react-native";
 import LottieView from "lottie-react-native";
-import { responsive } from "../src/helpers/Globalhelper";
+import { responsive } from "../helpers/Globalhelper";
 
 const Splash = () => {
   return (
@@ -11,7 +11,7 @@ const Splash = () => {
           width: responsive.deviceWidth,
           height: responsive.deviceHeight,
         }}
-        source={require("../assets/splash.json")}
+        source={require("../../assets/loader.json")}
         autoPlay
         loop
       />

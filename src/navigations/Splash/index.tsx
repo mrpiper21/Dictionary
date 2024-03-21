@@ -1,7 +1,7 @@
 import { View, Text } from "react-native";
 import React from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import Splash from "../../../loaders/Splash";
+import Splash from "../../loaders/Splash";
 import { NavigationContainer } from "@react-navigation/native";
 
 const Stack = createNativeStackNavigator();

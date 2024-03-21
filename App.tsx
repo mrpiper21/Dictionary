@@ -5,7 +5,7 @@ import { responsive } from "./src/helpers/Globalhelper";
 import Stacknavigation from "./src/navigations/Stacknavigation";
 import Splashnavigation from "./src/navigations/Splash";
 import { useNavigation } from "@react-navigation/native";
-import uploadDictionaryData from "./features/service/Updloadata";
+import uploadDictionaryData from "./src/features/service/Updloadata";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import axios from "axios";
 

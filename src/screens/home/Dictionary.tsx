@@ -3,7 +3,7 @@ import React from "react";
 import { responsive } from "../../helpers/Globalhelper";
 import { Ionicons, Entypo, AntDesign, Foundation } from "@expo/vector-icons";
 import Header from "../../widget/Header";
-import uploadDictionaryData from "../../../features/service/Updloadata";
+import uploadDictionaryData from "../../features/service/Updloadata";
 
 const Dictionary = () => {
   return (
