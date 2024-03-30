@@ -12,7 +12,7 @@ const WordOfTheDay = () => {
   return (
     <View className="px-3">
       <View
-        style={{ height: responsive.deviceHeight * 0.59 }}
+        style={{ height: responsive.deviceHeight * 0.54 }}
         className="bg-teal-500 mt-4 rounded-xl p-4"
       >
         {/**word of the day and date */}
@@ -37,8 +37,8 @@ const WordOfTheDay = () => {
 
         {/**Word definition */}
         <View
-          style={{ height: responsive.deviceHeight * 0.34 }}
-          className="bg-white rounded-xl mt-3"
+          style={{ height: responsive.deviceHeight * 0.25 }}
+          className="bg-white rounded-xl mt-2"
         >
           <Text className="text-xl font-bold text-teal-700">Definition</Text>
           <Text className="text-xl">

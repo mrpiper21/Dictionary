@@ -11,7 +11,7 @@ const Splash = () => {
           width: responsive.deviceWidth,
           height: responsive.deviceHeight,
         }}
-        source={require("../../assets/loader.json")}
+        source={require("../../assets/splash.json")}
         autoPlay
         loop
       />
