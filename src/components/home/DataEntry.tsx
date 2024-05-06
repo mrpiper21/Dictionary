@@ -1,16 +1,27 @@
 import React from "react";
 import { View, Text, StyleSheet } from "react-native";
 
-const DictionaryEntry = ({ word, phonetic, meanings }) => {
+const DictionaryEntry = ({ word, phonetic, meanings, phonetics, origin }) => {
   return (
-    <View className="flex items-center justify-center">
+    <View className="flex items-center justify-center px-2 mb-20">
       <Text style={styles.word}>{word}</Text>
       <Text style={styles.phonetic}>{phonetic}</Text>
+      {origin && <Text>Origin: {origin}</Text>}
+      <View>
+        {phonetics?.map((item, index) => {
+          <View key={index}>
+            <Text>Phonetic: {item.text}</Text>
+            <Text>Audio URL: {item.audio}</Text>
+          </View>;
+        })}
+      </View>
       {meanings && (
         <>
           {meanings.map((meaning, index) => (
             <View key={index} style={styles.meaningContainer}>
-              <Text style={styles.partOfSpeech}>{meaning.partOfSpeech}</Text>
+              <Text style={styles.partOfSpeech} className="text-violet-800">
+                {meaning.partOfSpeech}
+              </Text>
               {meaning.definitions.map((definition, definitionIndex) => (
                 <View key={definitionIndex} style={styles.definitionContainer}>
                   <Text style={styles.definition}>{definition.definition}</Text>
@@ -64,6 +75,7 @@ const styles = StyleSheet.create({
   },
   definition: {
     fontSize: 16,
+    backgroundColor: "#FFFD9D",
   },
   synonyms: {
     fontStyle: "italic",

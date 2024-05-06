@@ -2,21 +2,17 @@ import { View, TextInput, TouchableOpacity, Text } from "react-native";
 import { responsive } from "../../helpers/Globalhelper";
 import { AntDesign, EvilIcons } from "@expo/vector-icons";
 import React, { useState } from "react";
-import { useActionData } from "react-router-dom";
-import AsyncStorageService from "../../features/service/Datastore";
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp,
+} from "react-native-responsive-screen";
 
-const SearchBar = ({
-  searchQuery,
-  handleSearch,
-  setSearchQuery,
-  onFocus,
-  onBlur,
-}) => {
+const SearchBar = ({ setIsSearching, setSearchQuery, onFocus, onBlur }) => {
   return (
     <View
       className="bg-teal-600 justify-center p-3 flex flex-row items-center space-x-3"
       style={{
-        height: responsive.deviceHeight * 0.1,
+        height: hp(13),
       }}
     >
       <View className="flex flex-row items-center space-x-3 mt-1">
@@ -36,7 +32,7 @@ const SearchBar = ({
         </View>
       </View>
       <TouchableOpacity
-        onPress={handleSearch}
+        onPress={() => setIsSearching(true)}
         className="bg-slate-300 px-2 rounded-lg items-start justify-center"
         style={{ height: responsive.deviceHeight * 0.045 }}
       >

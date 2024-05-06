@@ -6,13 +6,16 @@ import {
   AntDesign,
   EvilIcons,
 } from "@expo/vector-icons";
-import { responsive } from "../../helpers/Globalhelper";
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp,
+} from "react-native-responsive-screen";
 
 const WordOfTheDay = () => {
   return (
     <View className="px-3">
       <View
-        style={{ height: responsive.deviceHeight * 0.54 }}
+        style={{ height: "auto" }}
         className="bg-teal-500 mt-4 rounded-xl p-4"
       >
         {/**word of the day and date */}
@@ -37,11 +40,16 @@ const WordOfTheDay = () => {
 
         {/**Word definition */}
         <View
-          style={{ height: responsive.deviceHeight * 0.25 }}
+          style={{ height: "auto", padding: wp(1) }}
           className="bg-white rounded-xl mt-2"
         >
-          <Text className="text-xl font-bold text-teal-700">Definition</Text>
-          <Text className="text-xl">
+          <Text
+            style={{ fontSize: wp(4.5) }}
+            className="font-bold text-teal-700"
+          >
+            Definition
+          </Text>
+          <Text>
             <Text className="font-bold text-blue-400">translator - </Text>
             Lorem ipsum, dolor sit amet consectetur adipisicing elit.
             Perspiciatis amet illo repudiandae alias consectetur tempora saepe

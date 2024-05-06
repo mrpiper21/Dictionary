@@ -3,10 +3,7 @@ import React, { useState } from "react";
 import { responsive } from "../../helpers/Globalhelper";
 import { Ionicons, Entypo, AntDesign, Foundation } from "@expo/vector-icons";
 import Header from "../../widget/Header";
-import uploadDictionaryData from "../../features/service/Updloadata";
-import { useNavigation } from "@react-navigation/native";
 import LottieView from "lottie-react-native";
-import Animated, { useSharedValue } from "react-native-reanimated";
 
 const Dictionary = () => {
   const [isLoading, setisLoading] = useState(false);

@@ -1,70 +1,69 @@
-import { View, SafeAreaView, FlatList } from "react-native";
+import { View, SafeAreaView, FlatList, ActivityIndicator } from "react-native";
 import React, { useEffect, useState } from "react";
 import WordOfTheDay from "../../components/home/WordOfTheDay";
 import Activity from "../../components/home/Activity";
 import SearchBar from "../../components/home/SearchBar";
 import DictionaryEntry from "../../components/home/DataEntry";
-import AsyncStorageService from "../../features/service/Datastore";
-import searchDefinition from "../../../hooks/searchDefinition";
 import { useQuery } from "@tanstack/react-query";
-import axios, { Axios } from "axios";
-import { getDefinitions } from "../../features/service/Updloadata";
 
 const Home = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [isTyping, setIsTyping] = useState(false);
-  const [data, setData] = useState(false);
+  const [Data, setData] = useState([]);
+  const [isSearching, setIsSearching] = useState(false);
 
-  const handleSearch = async () => {
-    setIsTyping(true);
-    setSearchQuery(searchQuery);
-
-    try {
-      const Data = await getDefinitions(searchQuery);
-      setData(Data);
-      const d = JSON.stringify(Data);
-      console.log(d);
-    } catch (error) {
-      console.error("Failed to fetch definition. Please try again later.");
-    } finally {
-      setIsTyping(false);
+  const { isPending, error, data, isLoading } = useQuery({
+    queryKey: ["repoData"],
+    queryFn: () =>
+      fetch(
+        `https://api.dictionaryapi.dev/api/v2/entries/en/${searchQuery.trim()}`
+      ).then((res) => res.json()),
+    enabled: isSearching,
+  });
+  useEffect(() => {
+    if (data) {
+      setData(data);
+      console.log(Data);
+      setIsSearching(false);
     }
-  };
-
-  // const { isPending, error, data } = useQuery({
-  //   queryKey: ["word"],
-  //   queryFn: () =>
-  //     axios
-  //       .get(`https://api.dictionaryapi.dev/api/v2/entries/en/hello`)
-  //       .then((res) => res.data),
-  // });
-
-  // console.log(data);
+    if (error) {
+      console.log(error);
+    }
+    if (searchQuery === "") {
+      setData([]);
+    }
+  }, [data, error, searchQuery]);
 
   return (
-    <View className="flex">
+    <View className="flex-1 bg-white">
       <SearchBar
-        searchQuery={searchQuery}
+        setIsSearching={setIsSearching}
         setSearchQuery={setSearchQuery}
-        handleSearch={handleSearch}
         onFocus={() => setIsTyping(true)}
         onBlur={() => setIsTyping(false)}
       />
       {/**catalog */}
-      {data && typeof data === "object" && Array.isArray(data) ? (
-        data.map((item) => (
-          <FlatList
-            data={item.word}
-            keyExtractor={(item) => item}
-            renderItem={({ item }) => (
-              <DictionaryEntry
-                word={item.word}
-                phonetic={item.phonetic}
-                meanings={item.meanings}
-              />
-            )}
-          />
-        ))
+      {isSearching ? (
+        <View className="flex-1 justify-center items-center">
+          <ActivityIndicator />
+        </View>
+      ) : Data &&
+        Data.length !== 0 &&
+        typeof Data === "object" &&
+        Array.isArray(Data) ? (
+        <FlatList
+          data={Data}
+          keyExtractor={(item) => item}
+          renderItem={({ item }) => (
+            <DictionaryEntry
+              word={item.word}
+              phonetic={item.phonetic}
+              meanings={item.meanings}
+              phonetics={item.phonetics}
+              origin={item.origin}
+            />
+          )}
+        />
       ) : (
         <View>
           <View className="mt-4">

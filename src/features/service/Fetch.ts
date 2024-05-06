@@ -1,5 +1,31 @@
 import axios from "axios";
 
+export interface WordDefinition {
+  WordData: [
+    {
+      word: string;
+      phonetics: any[];
+      meanings: [
+        {
+          partOfSpeech: string;
+          definitions: [
+            {
+              definition: string;
+              synonyms?: any[];
+              antonyms?: any[];
+            },
+            {
+              definition: string;
+              synonyms?: any[];
+              antonyms: any[];
+            }
+          ];
+        }
+      ];
+    }
+  ];
+}
+
 const Fetch = async (word) => {
   try {
     const response = await axios.get(
