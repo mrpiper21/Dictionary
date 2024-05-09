@@ -35,7 +35,7 @@ const Home = () => {
   }, [data, error, searchQuery]);
 
   return (
-    <View className="flex-1 bg-white">
+    <View className="flex-1">
       <SearchBar
         setIsSearching={setIsSearching}
         setSearchQuery={setSearchQuery}
@@ -65,12 +65,14 @@ const Home = () => {
           )}
         />
       ) : (
-        <View>
+        <View className="flex-1 flex-col">
           <View className="mt-4">
             <Activity />
           </View>
           {/**word of the day */}
-          <WordOfTheDay />
+          <View>
+            <WordOfTheDay />
+          </View>
         </View>
       )}
     </View>

@@ -1,8 +1,6 @@
 import { View, Text } from "react-native";
 import React from "react";
 import {
-  FontAwesome,
-  SimpleLineIcons,
   AntDesign,
   EvilIcons,
 } from "@expo/vector-icons";
@@ -13,7 +11,7 @@ import {
 
 const WordOfTheDay = () => {
   return (
-    <View className="px-3">
+    <View style={{ height: "auto" }} className="px-3">
       <View
         style={{ height: "auto" }}
         className="bg-teal-500 mt-4 rounded-xl p-4"
@@ -54,7 +52,17 @@ const WordOfTheDay = () => {
             Lorem ipsum, dolor sit amet consectetur adipisicing elit.
             Perspiciatis amet illo repudiandae alias consectetur tempora saepe
             explicabo laudantium rerum vitae, ipsum ipsam tempore natus culpa,
-            deserunt distinctio, cupiditate neque quae!
+            deserunt distinctio, cupiditate neque quae! Lorem ipsum dolor, sit
+            amet consectetur adipisicing elit. Dolore atque quaerat consequuntur
+            tenetur facere assumenda magnam ad omnis. Saepe, eligendi placeat
+            enim similique vel et suscipit fuga iusto eaque consequatur. Lorem
+            ipsum dolor sit amet consectetur adipisicing elit. Eius eos quod
+            nostrum illo, repellendus in ducimus repudiandae quia a eveniet
+            tempore unde ullam, perferendis dignissimos iure aperiam et
+            accusantium officia. Lorem ipsum dolor sit amet consectetur
+            adipisicing elit. Ratione praesentium recusandae aut nihil quasi
+            officia facilis, vel laboriosam, hic sed eveniet obcaecati velit
+            dolore, incidunt iste! Ab deleniti totam modi?
           </Text>
         </View>
       </View>

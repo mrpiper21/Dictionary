@@ -3,7 +3,7 @@ import { View, Text, StyleSheet } from "react-native";
 
 const DictionaryEntry = ({ word, phonetic, meanings, phonetics, origin }) => {
   return (
-    <View className="flex items-center justify-center px-2 mb-20">
+    <View className="flex items-center justify-center px-2 bg-white">
       <Text style={styles.word}>{word}</Text>
       <Text style={styles.phonetic}>{phonetic}</Text>
       {origin && <Text>Origin: {origin}</Text>}
@@ -75,7 +75,9 @@ const styles = StyleSheet.create({
   },
   definition: {
     fontSize: 16,
-    backgroundColor: "#FFFD9D",
+    fontWeight: "500",
+    // backgroundColor: "#E1F7F5",
+    color: "#00215E",
   },
   synonyms: {
     fontStyle: "italic",
